@@ -1,11 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 
-
-const Nav = styled.nav`
+export const Nav = styled.nav`
     background-color: red;
 `;
 
+export const NavList = styled.ul`
+    display: flex;
+    color: red;
+    text-decoration: none;
+`;
 
-export default Nav;
+export const StyledNavLink = styled(NavLink)`
+    color: white;
+    text-decoration: none;
+`;
+
+
+
+
