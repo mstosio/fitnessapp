@@ -1,13 +1,14 @@
 import React from 'react';
-import { Nav } from '../styled/index';
-import { Link } from 'react-router-dom';
+import { Nav, Logo } from '../styled/index';
 import SignedInLinks from './SignedInLinks';
 
+
 const Navbar = () => (
-        <Nav>
-                <Link to='/' >Hello</Link>
-                <SignedInLinks/> 
+       <Nav>  
+                <Logo to='/' >Hello</Logo>
+                <SignedInLinks/>
         </Nav>
+   
 );
 
 export default Navbar;
