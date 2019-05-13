@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavList, StyledNavLink } from '../styled/index';
+import { NavList, StyledNavLink } from '../layout/styled/index';
 
 const SignedInLinks = () => (
 

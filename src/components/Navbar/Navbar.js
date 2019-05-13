@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Logo } from '../styled/index';
+import { Nav, Logo } from '../layout/styled/index';
 import SignedInLinks from './SignedInLinks';
 
 

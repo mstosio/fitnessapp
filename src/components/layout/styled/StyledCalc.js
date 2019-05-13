@@ -9,8 +9,8 @@ export const CalcWrapper = styled.div`
     grid-templete-columns: 1fr 1fr;
     grid-templete-rows: auto;
     grid-template-areas: 
-    'calc-out calc-diet calc-questions'
-    'calc-out calc-diet calc-questions';
+    'calc-questions calc-diet calc-out'
+    'calc-questions calc-diet calc-out';
     padding: 0 150px;
 `;
 
@@ -22,6 +22,3 @@ export const StyledCalcDietInfo = styled.div`
     grid-area: calc-diet;
 `;
 
-export const StyledCalcQuestions = styled.div`
-    grid-area: calc-questions
-`;

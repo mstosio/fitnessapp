@@ -1,10 +1,11 @@
 import React from 'react';
+import { StyledAvatar } from '../layout/styled/index';
 
 
 const Avatar = (props) => {
     console.log(props);
     return (
-        <div></div>
+        <StyledAvatar src={props.src}></StyledAvatar>
     );
 };
 
