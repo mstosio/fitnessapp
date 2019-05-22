@@ -10,14 +10,14 @@ class GenderSelect extends React.Component {
                     <Avatar src={"https://www.heartfoundation.org.au/images/elements/bmi-male-loop.gif"}></Avatar>
                     <InputWrapper>
                         <input type="radio" id="gender-male" name="gender-type" value="male"/>
-                        <label for="gender-male">Male</label>
+                        <label htmlFor="gender-male">Male</label>
                     </InputWrapper>
                 </GroupItem>
                 <GroupItem>
                     <Avatar src={"https://www.heartfoundation.org.au/images/elements/bmi-female-loop.gif"}></Avatar>
                     <InputWrapper>
                         <input type="radio" id="gender-female" name="gender-type" value="female"/>
-                        <label for="gender-female">Female</label>
+                        <label htmlFor="gender-female">Female</label>
                     </InputWrapper>
                 </GroupItem>
             </StyledGroup>
