@@ -7,10 +7,16 @@ import styled, { ThemeProvider } from 'styled-components';
 export const StyledCalcQuestions = styled.div`
     grid-area: calc-questions;
     display: flex;
+    flex-direction: column;
     height: 60vh;
     margin-top: 50px;
     padding-top: 25px;
     background-color: ${({theme}) => theme.colors.lightgray};
+`;
+
+export const StyledHeader = styled.h2`
+    display: flex;
+    justify-content: center;
 `;
 
 export const StyledAvatar = styled.img`
