@@ -8,16 +8,16 @@ class ActivitySelect extends React.Component {
                 <GroupItem>
                 <h2>What's your Activity rate?</h2>
                     <InputWrapper>
-                        <input type="radio" id="very-low-activity" name="activity-rate" value="male"/>
+                        <input type="radio" id="very-low-activity" name="activity" value="verylowactivity"/>
                         <label htmlFor="very-low-activity">Very low</label>
 
-                        <input type="radio" id="low-activity" name="gender-type" value="male"/>
+                        <input type="radio" id="low-activity" name="activity" value="lowactivity"/>
                         <label htmlFor="low-activity">Low</label>
 
-                        <input type="radio" id="avarage-activity" name="gender-type" value="male"/>
+                        <input type="radio" id="avarage-activity" name="activity" value="avarageactivity"/>
                         <label htmlFor="avarage-activity">Avarage</label>
 
-                        <input type="radio" id="high-activity" name="gender-type" value="male"/>
+                        <input type="radio" id="high-activity" name="activity" value="highactivity"/>
                         <label htmlFor="high-activity">High</label>
                     </InputWrapper>
                 </GroupItem>
