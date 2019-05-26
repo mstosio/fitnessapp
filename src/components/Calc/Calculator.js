@@ -6,12 +6,27 @@ import { CalcWrapper, StyledCalcList } from '../layout/styled/index';
 
 
 class Calculator extends React.Component {
+
+  state = {
+    informations: {}
+  }
+
+
+  addInformations = info => {
+    this.setState({
+      informations: info
+    });
+  }
+
     render() {
+      // const { genderType } = this.state;
+
+
       return (
         <CalcWrapper>
-          <CalcQuestions></CalcQuestions>
-          <CalcDietInfo></CalcDietInfo>
-          <CalcOutput></CalcOutput>
+          <CalcQuestions addInformations={this.addInformations}/>
+          <CalcDietInfo/>
+          <CalcOutput informations={this.state.informations}/>
         </CalcWrapper>
       );
     }

@@ -8,48 +8,37 @@ import ActivitySelect from './ActivitySelect';
 
 
 class CalcQuestions extends React.Component {
-    state = {
-        genderType: '',
-        weight: '',
-        height: '',
-        activity: '',
-        genderTypeError: '',
-        weightError: '',
-        heightError: '',
-        activityError: ''
-     }
-  
     onFormSubmit = (event) => {
         event.preventDefault();
-        event.target.gendertype.value;
-        this.setState({
-            genderType: event.target.gendertype.value,
-            weight: event.target.weight.value,
-            height: event.target.height.value,
-            activity: event.target.activity.value
-
-        });
-    }
+           const informations = {
+                genderType: event.target.gendertype.value,
+                weight: event.target.weight.value,
+                height: event.target.height.value,
+                activity: event.target.activity.value
+            };
+            
+            this.props.addInformations(informations);
+      }
 
     render() {
-        const { genderType } = this.state;
+        // const { genderType, weight, height, activity } = this.state;
        
         return (
-       
             <ThemeProvider theme={theme}>
                 <StyledCalcQuestions>
                 <StyledHeader>What's your BMI bro?</StyledHeader>
                     <Form action="" onSubmit={this.onFormSubmit}>
-                        <GenderSelect></GenderSelect>
+                        <GenderSelect ></GenderSelect>
                         <RangeInput></RangeInput>
                         <ActivitySelect/>
-                        <p>{genderType}</p>
-                        <button type="submit" value="Submit">Oblicz</button>
+                        <button type="submit">Oblicz</button>
+                        <button onClick={this.props.greet}>bler</button>
                     </Form>
                 </StyledCalcQuestions>
             </ThemeProvider>
         );
     }
 }
+
 
 export default CalcQuestions;

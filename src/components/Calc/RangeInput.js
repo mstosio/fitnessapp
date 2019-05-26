@@ -5,7 +5,7 @@ class RangeInput extends React.Component {
 
     state = {
         height: '',
-        weight: ''
+        weight:  ''
     }
 
     updateHeight = (event) => {
