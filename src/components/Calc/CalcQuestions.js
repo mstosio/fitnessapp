@@ -14,21 +14,21 @@ const initialState = {
     range: '',
     genderError: '',
     activityError: '',
-    rangeError: ''
-    
+    rangeError: '',
 };
 
 class CalcQuestions extends React.Component {
     state = initialState;
 
     handleChange = event => {
+       
         this.setState({
             [event.target.name]: event.target.value
         });
     }
 
     validateForm = () => {
-        let { genderError, activityError } = "";
+        let { genderError, activityError, rangeError } = "";
 
         if(this.state.gendertype === ''){
             genderError = 'Please, select your gender';
@@ -38,10 +38,20 @@ class CalcQuestions extends React.Component {
             activityError = 'Please, select your activity';
         }
 
-        if(genderError || activityError){
-            this.setState({genderError,  activityError});
+        if(this.state.weight < 30 || this.state.weight > 180){
+            rangeError = 'Your height should be less then 180 and more then 30';
+        }   
+
+        if(this.state.height < 50 || this.state.height > 250){
+            rangeError = 'Your weight should be less then 180 and more then 30';
+        }
+
+
+        if(genderError || activityError || rangeError){
+            this.setState({genderError,  activityError, rangeError});
             return false;
         }
+        
         return true;
     };
 
@@ -62,17 +72,24 @@ class CalcQuestions extends React.Component {
       }
 
     render() {
+        const { genderError, rangeError, activityError} = this.state;
+
         return (
             <ThemeProvider theme={theme}>
                 <StyledCalcQuestions>
          
                 <StyledHeader>What's your BMI bro?</StyledHeader>
                     <Form action="" onSubmit={this.onFormSubmit}>
+
                         <GenderSelect handleChange={this.handleChange}></GenderSelect>
-                        <div>{this.state.genderError}</div>
+                        <div>{genderError}</div>
+
                         <RangeInput handleChange={this.handleChange}></RangeInput>
+                        <div>{rangeError}</div>
+
                         <ActivitySelect handleChange={this.handleChange}/>
-                        <div>{this.state.activityError}</div>
+                        <div>{activityError}</div>
+
                         <button type="submit">Oblicz</button>
                         <button onClick={this.props.greet}>bler</button>
                     </Form>

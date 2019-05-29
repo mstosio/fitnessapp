@@ -15,6 +15,8 @@ export const CalcWrapper = styled.div`
 `;
 
 export const StyledCalcOut = styled.div`
+    display: flex;
+    flex-direction: column;
     grid-area: calc-out;
 `;
 

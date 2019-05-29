@@ -19,9 +19,6 @@ class Calculator extends React.Component {
   }
 
     render() {
-      // const { genderType } = this.state;
-
-
       return (
         <CalcWrapper>
           <CalcQuestions addInformations={this.addInformations}/>
