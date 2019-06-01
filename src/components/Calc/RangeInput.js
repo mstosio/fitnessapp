@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledCalcQuestions, StyledGroup, InputWrapper, GroupItem, Form } from '../layout/styled/index';
 
 class RangeInput extends React.Component {
@@ -28,12 +29,12 @@ class RangeInput extends React.Component {
                     <InputWrapper>
                         <label htmlFor="weight">Weight</label>
                         <input type="range" name="weight" min="30" max="180" value={this.state.weight} onChange={this.updateWeight}/>    
-                        <input type="number" name="" id="" value={this.state.weight} getValue={this.handleChange} onChange={this.updateWeight}/>
+                        <input type="number" name="" id="" value={this.state.weight} getvalue={this.handleChange} onChange={this.updateWeight}/>
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="weight">Height</label>
                         <input type="range" name="height" min="120" max="225" value={this.state.height} onChange={this.updateHeight}/>
-                        <input type="number" name="" id="" value={this.state.height} getValue={this.handleChange} onChange={this.updateHeight}/>
+                        <input type="number" name="" id="" value={this.state.height} getvalue={this.handleChange} onChange={this.updateHeight}/>
                     </InputWrapper>
                 </GroupItem>
             </StyledGroup>
@@ -41,4 +42,12 @@ class RangeInput extends React.Component {
     }
 }
 
+
+
 export default RangeInput;
+
+RangeInput.propTypes = {
+    updateHeight: PropTypes.number,
+    updateWeight: PropTypes.number,
+    handleChange: PropTypes.func
+};
