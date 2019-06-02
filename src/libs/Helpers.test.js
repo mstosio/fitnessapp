@@ -1,5 +1,5 @@
-import { test } from './Helpers';
+import { calculateBMI } from './Helpers';
 
-test('Two plus to equals 4', () =>{
-    expect(2 + 2).toBe(4);
+test('Calculate BMI', () => {
+    expect(calculateBMI(102, 178)).toBe("32.19");
 });

@@ -1,32 +1,34 @@
 import React from 'react';
 import { StyledCalcOut } from '../layout/styled/index';
+import { calculateBMI, calculateBmiRange } from '../../libs/Helpers';
 
 class CalcOutput extends React.Component {
+    state = {
+        BMI: ""
+    }
 
-
-    componentDidUpdate(props){
-        console.log("hello1");
    
+    componentDidUpdate(){
+        const {weight, height } = this.props.informations;
+        const currentBMI = calculateBMI(weight, height);
+
+        if(this.state.BMI != currentBMI){
+            this.setState({
+                BMI: currentBMI
+            });
+        }
     }
 
-    // countBMI = (props) => {
-    //     console.log(this.props.informations.gender);
-    // }
-
-    componentDidMount(){
-        console.log("hello");
-    }
-
-
-    
     render() {
-
+        const { BMI } = this.state;
+      
         return (
                 <StyledCalcOut>
-                    Gender: {this.props.informations.gender}
-                    Weight: {this.props.informations.weight}
-                    Height: {this.props.informations.height}
-                    Activity: {this.props.informations.activity}
+                  <div>{calculateBmiRange(BMI)}</div>
+                  <div>{this.state.BMI}</div>
+               
+                   
+                   
                 </StyledCalcOut>
 
         );

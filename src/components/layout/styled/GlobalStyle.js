@@ -14,8 +14,13 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Montserrat';
     }
 
-    *, *::before, *::after {
+    html {
         box-sizing: border-box;
+    }
+
+
+    *, *::before, *::after {
+        box-sizing: inherit;
     }
 `;
 
