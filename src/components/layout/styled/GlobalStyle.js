@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: #f0f1f6;
         margin: 0;
         padding: 0;
-        font-family: 'Montserrat';
+        font-family: 'Montserrat', sans-serif;
     }
 
     html {
@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
     }
 `;
-
 
 
 export default GlobalStyle;

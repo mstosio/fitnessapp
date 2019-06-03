@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledCalcQuestions, StyledGroup, InputWrapper, GroupItem, Form } from '../layout/styled/index';
+import { StyledGroup, InputWrapper, GroupItem, Form, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper } from '../layout/styled/index';
 import Avatar from './Avatar';
 
 class GenderSelect extends React.Component {
@@ -8,18 +8,22 @@ class GenderSelect extends React.Component {
             <StyledGroup>
                 <GroupItem>
                     <Avatar src={"https://www.heartfoundation.org.au/images/elements/bmi-male-loop.gif"}></Avatar>
-                    <InputWrapper>
-                        <input type="radio" id="gender-male" name="gendertype" value="male" onChange={this.props.handleChange}/>
-                        <label htmlFor="gender-male">Male</label>
-                    </InputWrapper>
+                    <StyledRadioInputWrapper>
+                        <StyledRadioInput type="radio" id="gender-male" name="gendertype" value="male" onChange={this.props.handleChange}/>
+                        <StyledRadioInputLabel htmlFor="gender-male" primary/>
+                        <div>Male</div>
+                    </StyledRadioInputWrapper>
+                 
                 </GroupItem>
               
                 <GroupItem>
                     <Avatar src={"https://www.heartfoundation.org.au/images/elements/bmi-female-loop.gif"}></Avatar>
-                    <InputWrapper>
-                        <input type="radio" id="gender-female" name="gendertype" value="female" onChange={this.props.handleChange}/>
-                        <label htmlFor="gender-female">Female</label>
-                    </InputWrapper>
+                    <StyledRadioInputWrapper>
+                        <StyledRadioInput type="radio" id="gender-female" name="gendertype" value="female" onChange={this.props.handleChange} />
+                        <StyledRadioInputLabel htmlFor="gender-female" primary/>
+                        <div>Female</div>
+                    </StyledRadioInputWrapper>
+                    
                 </GroupItem>
             </StyledGroup>
         );

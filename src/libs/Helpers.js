@@ -70,23 +70,18 @@ export const calculateDailyMacro = (BMR, weight, dietType) => {
     const typeOfDiet = dietType === "lowcarb" ? lowCarbDietInfo : (dietType === "highcarb" ? highCarbDietInfo : balacancedDietInfo);
 
     const proteins = typeOfDiet.protein * weight;
-    const fats = typeOfDiet.fatPercent * BMR;
+    const fatsKcal = typeOfDiet.fatPercent * BMR;
 
     const proteinsKcal = proteins*4;
-    const fatsKcal = fats/9;
+    const fats = fatsKcal/9;
 
-    const carbsKcal = (proteinsKcal - fatsKcal);
+    const carbsKcal = BMR - (proteinsKcal + fatsKcal);
     const carbs = carbsKcal/4;
 
-
-    console.log(proteins);
-    console.log(fats);
-    console.log(carbs);
-
-    
-    console.log(proteinsKcal);
-    console.log(fatsKcal);
-    console.log(carbsKcal);    
-
+    return {
+        proteins: Math.round(proteins),
+        carbs: Math.round(carbs),
+        fats: Math.round(fats)
+    };  
 
 };

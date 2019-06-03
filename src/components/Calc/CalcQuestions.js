@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyledCalcQuestions, StyledHeader, StyledGroup, InputWrapper, GroupItem, Form } from '../layout/styled/index';
+import { StyledCalcQuestions, StyledHeader, StyledButton, Form, StyledError } from '../layout/styled/index';
 import styled, { ThemeProvider } from 'styled-components';
 import  { theme }  from '../layout/utils/theme';
 import  GenderSelect  from './GenderSelect';
 import RangeInput  from './RangeInput';
 import ActivitySelect from './ActivitySelect';
-import { S_IFREG } from 'constants';
 
 
 const initialState = {
@@ -81,16 +80,15 @@ class CalcQuestions extends React.Component {
                     <Form action="" onSubmit={this.onFormSubmit}>
 
                         <GenderSelect handleChange={this.handleChange}></GenderSelect>
-                        <div>{genderError}</div>
+                        <StyledError>{genderError}</StyledError>
 
                         <RangeInput handleChange={this.handleChange}></RangeInput>
-                        <div>{rangeError}</div>
+                        <StyledError>{rangeError}</StyledError>
 
                         <ActivitySelect handleChange={this.handleChange}/>
-                        <div>{activityError}</div>
+                        <StyledError>{activityError}</StyledError>
 
-                        <button type="submit">Oblicz</button>
-                        <button onClick={this.props.greet}>bler</button>
+                        <StyledButton type="submit" primary>Oblicz</StyledButton>
                     </Form>
                 </StyledCalcQuestions>
             </ThemeProvider>

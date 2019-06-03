@@ -23,6 +23,7 @@ export const CalcMacronutrients = (props) => {
                     <input type="radio" name="diet-type" value="balanced" onChange={props.handleChange}/>
                     <label htmlFor="">Balanced</label>
                 </InputWrapper>
+                {props.dietError}
                 <button type="submit">Dalej</button>
             </form>
         </React.Fragment>

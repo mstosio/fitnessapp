@@ -5,12 +5,16 @@ import styled, { ThemeProvider } from 'styled-components';
 
 
 export const StyledCalcQuestions = styled.div`
+    color: #ffffff;
+    flex-direction: column;
     grid-area: calc-questions;
+    border-radius: 25px;
+    align-self: center;
+    justify-self: center;
     display: flex;
     flex-direction: column;
-    height: 60vh;
-    margin-top: 50px;
-    padding-top: 25px;
+    height: 70vh;
+    width: 100%;
     background-color: ${({theme}) => theme.colors.lightgray};
 `;
 
@@ -40,14 +44,16 @@ export const GroupItem = styled.div`
     align-items: center;
 `;
 
-export const InputWrapper = styled.div`
+export const StyledError = styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
-    text-transform: uppercase;
-    padding-top: 25px;
+    color: red;
 `;
 
 
 export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
     width: 100%;
 `;
