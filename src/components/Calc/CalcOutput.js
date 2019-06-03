@@ -24,11 +24,8 @@ class CalcOutput extends React.Component {
       
         return (
                 <StyledCalcOut>
-                  <div>{calculateBmiRange(BMI)}</div>
+            
                   <div>{this.state.BMI}</div>
-               
-                   
-                   
                 </StyledCalcOut>
 
         );

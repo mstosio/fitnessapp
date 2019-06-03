@@ -14,14 +14,13 @@ const initialState = {
     range: '',
     genderError: '',
     activityError: '',
-    rangeError: '',
+    rangeError: ''
 };
 
 class CalcQuestions extends React.Component {
     state = initialState;
 
     handleChange = event => {
-       
         this.setState({
             [event.target.name]: event.target.value
         });

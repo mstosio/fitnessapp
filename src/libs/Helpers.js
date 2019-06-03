@@ -48,5 +48,45 @@ export const calculateDailyCaloricDemand = (gender, weight, height, activity) =>
     const BMR = activityRate[activity];
     
     return weight * BMR;   
+};
+
+
+const lowCarbDietInfo = {
+    protein: 2,
+    fatPercent: 0.40
+};
+
+const highCarbDietInfo = {
+    protein: 2,
+    fatPercent: 0.25
+};
+
+const balacancedDietInfo = {
+    protein: 2,
+    fatPercent: 0.3
+};
+
+export const calculateDailyMacro = (BMR, weight, dietType) => {
+    const typeOfDiet = dietType === "lowcarb" ? lowCarbDietInfo : (dietType === "highcarb" ? highCarbDietInfo : balacancedDietInfo);
+
+    const proteins = typeOfDiet.protein * weight;
+    const fats = typeOfDiet.fatPercent * BMR;
+
+    const proteinsKcal = proteins*4;
+    const fatsKcal = fats/9;
+
+    const carbsKcal = (proteinsKcal - fatsKcal);
+    const carbs = carbsKcal/4;
+
+
+    console.log(proteins);
+    console.log(fats);
+    console.log(carbs);
+
+    
+    console.log(proteinsKcal);
+    console.log(fatsKcal);
+    console.log(carbsKcal);    
+
 
 };
