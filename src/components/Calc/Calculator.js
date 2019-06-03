@@ -22,7 +22,7 @@ class Calculator extends React.Component {
       return (
         <CalcWrapper>
           <CalcQuestions addInformations={this.addInformations}/>
-          <CalcDietInfo/>
+          <CalcDietInfo informations={this.state.informations}/>
           <CalcOutput informations={this.state.informations}/>
         </CalcWrapper>
       );

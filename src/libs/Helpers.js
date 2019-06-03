@@ -3,6 +3,7 @@ export const calculateBMI = (weight, height) => {
     return parseInt(BMI.toFixed(2));
 };
 
+
 export const calculateBmiRange = (BMI) => {
     switch(true){
         case(BMI === ""):
@@ -24,4 +25,28 @@ export const calculateBmiRange = (BMI) => {
         case(BMI > 40):
             return "Super Obese!!";
     }
+};
+
+const activityRateMan =  {
+    verylowactivity: 25,
+    lowactivity: 29,
+    avarageactivity: 33,
+    highactivity: 36
+
+};
+
+const acivityRateWoman = {
+    verylowactivity: 23,
+    lowactivity: 27,
+    avarageactivity: 31,
+    highactivity: 34
+};
+
+
+export const calculateDailyCaloricDemand = (gender, weight, height, activity) => {
+    const activityRate = (gender === "male") ? activityRateMan : acivityRateWoman;
+    const BMR = activityRate[activity];
+    
+    return weight * BMR;   
+
 };
