@@ -6,8 +6,6 @@ import { StyledError, StyledHeader, StyledButton, Form, StyledRadioInputWrapper,
 
 export const CalcMacronutrients = (props) => {
 
-    
-
     return (
         <React.Fragment>
             <StyledHeader>What diet do your prefer?</StyledHeader>

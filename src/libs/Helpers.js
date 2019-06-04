@@ -85,3 +85,24 @@ export const calculateDailyMacro = (BMR, weight, dietType) => {
     };  
 
 };
+
+export const calculateNewMacros = (macros, dietType) => {
+
+    if(dietType === "loseWeight"){
+       macros.carbs = macros.carbs - 50;
+       macros.fats = macros.fats - 11;
+    } else {
+        macros.carbs = macros.carbs + 50;
+        macros.fats = macros.fats + 11;
+    }
+    
+    return macros;
+};
+
+export const calculateNewBMR = (BMR, dietType) => {
+    if(dietType === "loseWeight"){
+        return BMR - 300;
+    }
+
+    return BMR + 300;
+};

@@ -2,11 +2,10 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import  { theme }  from '../layout/utils/theme';
 import { CalcBMR } from './CalcBMR';
-import { StyledCalcDietInfo, StyledBMR } from '../layout/styled/index';
+import { StyledCalcDietInfo} from '../layout/styled/index';
 import { CalcMacronutrients } from './CalcMacronutrients';
 import { CalcMacronutrientsOutput } from './CalcMacronutrientsOutput';
 import { calculateDailyCaloricDemand, calculateDailyMacro } from '../../libs/Helpers';
-
 
 
 class CalcDietInfo extends React.Component {
@@ -16,9 +15,19 @@ class CalcDietInfo extends React.Component {
         isOutputVisible: false,
         dietType: '',
         dietTypeError: '', 
-        macros: {}
+        macros: {}, 
+        rerender: true
     };
     
+
+    changeMacros = (newBMR ,dietTypeMacros) => {
+        this.setState({
+            rerender: false,
+            BMR: newBMR,
+            macros: dietTypeMacros
+        });
+    }
+
 
     handleChange = (event) => {
         this.setState({
@@ -51,6 +60,7 @@ class CalcDietInfo extends React.Component {
 
         if(validation){
             this.setState({
+                rerender: true,
                 isVisible: false,
                 isOutputVisible: true,
                 macros: calculateDailyMacro(BMR, weight, dietType)
@@ -59,19 +69,12 @@ class CalcDietInfo extends React.Component {
     }
 
 
-    displayMacros(macro){
-        macros.map(macro => {
-            <div>
-                macro
-            </div>;
-        });
-    }
-     
+
     componentDidUpdate(){
         const { genderType, weight, height, activity} = this.props.informations;
         const currentBMR = calculateDailyCaloricDemand(genderType, weight, height, activity);
     
-        if(this.state.BMR != currentBMR){
+        if(this.state.BMR != currentBMR && this.state.rerender){
             this.setState({
                 BMR: currentBMR,
                 isVisible: true
@@ -80,16 +83,16 @@ class CalcDietInfo extends React.Component {
     }
        
     render() {
-        const { BMR,  isVisible, macros, isOutputVisible } = this.state;    
+        const { BMR,  isVisible, macros, isOutputVisible, rerender } = this.state;    
         let macronutrients,
             bmr;
 
-        if(BMR != "" && isVisible){
+        if(BMR != "" && isVisible && rerender){
             macronutrients = <CalcMacronutrients macro={BMR} dietError={this.state.dietTypeError} 
             weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit}/>;
              bmr = <CalcBMR macro={BMR}></CalcBMR>;
         } else if (isOutputVisible) {
-            macronutrients = <CalcMacronutrientsOutput macros={macros}></CalcMacronutrientsOutput>;
+            macronutrients = <CalcMacronutrientsOutput changeMacros={this.changeMacros} macros={macros} BMR={BMR}></CalcMacronutrientsOutput>;
             bmr = <CalcBMR macro={BMR}></CalcBMR>;
         }
 

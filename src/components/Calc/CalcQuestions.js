@@ -19,6 +19,9 @@ const initialState = {
 class CalcQuestions extends React.Component {
     state = initialState;
 
+
+   
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -53,6 +56,8 @@ class CalcQuestions extends React.Component {
         return true;
     };
 
+   
+
     onFormSubmit = (event) => {
         event.preventDefault();
         const checkValidation = this.validateForm();
@@ -74,7 +79,7 @@ class CalcQuestions extends React.Component {
 
         return (
             <ThemeProvider theme={theme}>
-                <StyledCalcQuestions>
+                <StyledCalcQuestions >
          
                 <StyledHeader>What's your BMI bro?</StyledHeader>
                     <Form action="" onSubmit={this.onFormSubmit}>
