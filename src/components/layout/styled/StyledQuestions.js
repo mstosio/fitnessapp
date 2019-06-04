@@ -11,13 +11,14 @@ export const StyledCalcQuestions = styled.div`
     justify-self: center;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 500px;
     background-color: ${({theme}) => theme.colors.lightgray};
 `;
 
 export const StyledHeader = styled.h2`
     display: flex;
     justify-content: center;
+    font-size: 1.2rem;
 `;
 
 export const StyledAvatar = styled.img`

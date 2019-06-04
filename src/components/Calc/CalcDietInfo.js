@@ -1,10 +1,12 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import  { theme }  from '../layout/utils/theme';
+import { CalcBMR } from './CalcBMR';
 import { StyledCalcDietInfo, StyledBMR } from '../layout/styled/index';
 import { CalcMacronutrients } from './CalcMacronutrients';
 import { CalcMacronutrientsOutput } from './CalcMacronutrientsOutput';
 import { calculateDailyCaloricDemand, calculateDailyMacro } from '../../libs/Helpers';
+
 
 
 class CalcDietInfo extends React.Component {
@@ -50,8 +52,8 @@ class CalcDietInfo extends React.Component {
         if(validation){
             this.setState({
                 isVisible: false,
-                macros: calculateDailyMacro(BMR, weight, dietType),
-                isOutputVisible: true
+                isOutputVisible: true,
+                macros: calculateDailyMacro(BMR, weight, dietType)
             });
         }
     }
@@ -79,29 +81,29 @@ class CalcDietInfo extends React.Component {
        
     render() {
         const { BMR,  isVisible, macros, isOutputVisible } = this.state;    
-        let input;
+        let macronutrients,
+            bmr;
 
         if(BMR != "" && isVisible){
-            input = <CalcMacronutrients macro={this.state.BMR} dietError={this.state.dietTypeError} 
+            macronutrients = <CalcMacronutrients macro={BMR} dietError={this.state.dietTypeError} 
             weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit}/>;
+             bmr = <CalcBMR macro={BMR}></CalcBMR>;
         } else if (isOutputVisible) {
-            input = <CalcMacronutrientsOutput macros={this.state.macros}></CalcMacronutrientsOutput>;
+            macronutrients = <CalcMacronutrientsOutput macros={macros}></CalcMacronutrientsOutput>;
+            bmr = <CalcBMR macro={BMR}></CalcBMR>;
         }
+
+    
 
         return (
             <ThemeProvider theme={theme}>
                 <StyledCalcDietInfo>
-                    <StyledBMR>{BMR}</StyledBMR>
-                    {input }
-                   
-                    
-                
+                    {bmr}
+                    {macronutrients}
                 </StyledCalcDietInfo>
             </ThemeProvider>
         );
 
-
-      
     }
 }
 

@@ -13,6 +13,5 @@ export const CalcWrapper = styled.div`
     grid-template-areas: 
     'calc-questions calc-diet calc-out'
     'calc-questions calc-diet calc-out';
-    padding: 0 50px;
 `;
 

@@ -5,7 +5,6 @@ import styled from 'styled-components';
 export const StyledButton = styled.button`
   display: block;
   margin: ${props => props.primary ? "25px auto" : "0 auto"};
-
 	background-color:#44c767;
 	-moz-border-radius:28px;
 	-webkit-border-radius:28px;
