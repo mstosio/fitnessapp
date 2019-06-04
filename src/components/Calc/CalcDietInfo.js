@@ -1,12 +1,17 @@
 import React from 'react';
-import { StyledCalcDietInfo } from '../layout/styled/index';
+import styled, { ThemeProvider } from 'styled-components';
+import  { theme }  from '../layout/utils/theme';
+import { StyledCalcDietInfo, StyledBMR } from '../layout/styled/index';
 import { CalcMacronutrients } from './CalcMacronutrients';
+import { CalcMacronutrientsOutput } from './CalcMacronutrientsOutput';
 import { calculateDailyCaloricDemand, calculateDailyMacro } from '../../libs/Helpers';
+
 
 class CalcDietInfo extends React.Component {
     state = {
         BMR: '',
         isVisible: true,
+        isOutputVisible: false,
         dietType: '',
         dietTypeError: '', 
         macros: {}
@@ -45,7 +50,8 @@ class CalcDietInfo extends React.Component {
         if(validation){
             this.setState({
                 isVisible: false,
-                macros: calculateDailyMacro(BMR, weight, dietType)
+                macros: calculateDailyMacro(BMR, weight, dietType),
+                isOutputVisible: true
             });
         }
     }
@@ -72,25 +78,26 @@ class CalcDietInfo extends React.Component {
     }
        
     render() {
-        const { BMR, dietType, isVisible, macros, dietTypeError } = this.state;    
+        const { BMR,  isVisible, macros, isOutputVisible } = this.state;    
         let input;
 
         if(BMR != "" && isVisible){
-            input = <CalcMacronutrients macro={this.state.BMR} dietError={this.state.dietTypeError} weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit}/>;
+            input = <CalcMacronutrients macro={this.state.BMR} dietError={this.state.dietTypeError} 
+            weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit}/>;
+        } else if (isOutputVisible) {
+            input = <CalcMacronutrientsOutput macros={this.state.macros}></CalcMacronutrientsOutput>;
         }
 
         return (
-        
-            <StyledCalcDietInfo>
-                <div>{BMR}</div>
-                {input }
-
-                    Proteins: {macros.proteins}
-                    Carbs: {macros.carbs}
-                Fats: {macros.fats}
+            <ThemeProvider theme={theme}>
+                <StyledCalcDietInfo>
+                    <StyledBMR>{BMR}</StyledBMR>
+                    {input }
+                   
+                    
                 
-            
-            </StyledCalcDietInfo>
+                </StyledCalcDietInfo>
+            </ThemeProvider>
         );
 
 

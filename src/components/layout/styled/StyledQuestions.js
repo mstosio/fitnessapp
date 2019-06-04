@@ -1,7 +1,5 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-
-
+import styled from 'styled-components';
 
 
 export const StyledCalcQuestions = styled.div`
@@ -13,7 +11,6 @@ export const StyledCalcQuestions = styled.div`
     justify-self: center;
     display: flex;
     flex-direction: column;
-    height: 70vh;
     width: 100%;
     background-color: ${({theme}) => theme.colors.lightgray};
 `;

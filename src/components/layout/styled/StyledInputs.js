@@ -127,8 +127,8 @@ export const StyledRadioInputWrapper = styled.div`
 
 export const StyledRadioInputLabel = styled.label`
   position: absolute;
-  top: 25%;
-  left: 4px;
+  top: ${props => props.primary ? "25%" : "41%"};
+  left: ${props => props.primary ? "4px" : "13px"};
   width: ${props => props.primary ? "24px" : "12px"};
   height: ${props => props.primary ? "24px" : "12px"};
   border-radius: 50%;
@@ -153,8 +153,8 @@ export const StyledRadioInput = styled.input`
       border-radius: 50%;
       width: 12px;
       height: 12px;
-      margin: 5px;
-      background: #eeeeee;
+      margin: ${props => props.primary ? "5px" : "-1px"};
+      background: ${props => props.primary ? "#eeeeee" : "#63d498"};
     }
   }
   &:checked + ${StyledRadioInputLabel} {
@@ -166,9 +166,9 @@ export const StyledRadioInput = styled.input`
       border-radius: 50%;
       width: 12px;
       height: 12px;
-      margin: 5px;
+      margin: ${props => props.primary ? "5px" : "-1px"};
       box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.1);
-      background: white;
+      background: ${props => props.primary ? "#eeeeee" : "#63d498"};
     }
   }
 `;

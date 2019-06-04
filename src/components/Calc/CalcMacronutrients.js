@@ -1,5 +1,6 @@
 import React from 'react';
 import { InputWrapper } from '../layout/styled';
+import { StyledError, StyledHeader, StyledButton } from '../layout/styled/index';
 
 
 
@@ -9,7 +10,7 @@ export const CalcMacronutrients = (props) => {
 
     return (
         <React.Fragment>
-            <h2>What diet do your prefer?</h2>
+            <StyledHeader>What diet do your prefer?</StyledHeader>
             <form action="" onSubmit={props.onFormSubmit}>
                 <InputWrapper>
                     <input type="radio" name="diet-type" value="highcarb" onChange={props.handleChange}/>
@@ -23,8 +24,8 @@ export const CalcMacronutrients = (props) => {
                     <input type="radio" name="diet-type" value="balanced" onChange={props.handleChange}/>
                     <label htmlFor="">Balanced</label>
                 </InputWrapper>
-                {props.dietError}
-                <button type="submit">Dalej</button>
+                <StyledError>{props.dietError}</StyledError>
+                <StyledButton type="submit" MacroButton>Dalej</StyledButton>
             </form>
         </React.Fragment>
     );

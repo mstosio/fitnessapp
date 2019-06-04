@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledCalcOut } from '../layout/styled/index';
-import { calculateBMI, calculateBmiRange } from '../../libs/Helpers';
+import { calculateBMI } from '../../libs/Helpers';
 
 class CalcOutput extends React.Component {
     state = {
@@ -24,7 +24,6 @@ class CalcOutput extends React.Component {
       
         return (
                 <StyledCalcOut>
-            
                   <div>{this.state.BMI}</div>
                 </StyledCalcOut>
 
