@@ -10,15 +10,17 @@ import { calculateNewMacros, calculateNewBMR } from '../../libs/Helpers';
 
 
 export class CalcMacronutrientsOutput extends React.Component {
-
-    state = {}
-
+        state = { 
+            
+        }
+  
     handleOnChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
-    }
 
+       
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -27,12 +29,15 @@ export class CalcMacronutrientsOutput extends React.Component {
         let dietTypeMacros = calculateNewMacros(this.props.macros, this.state.dietType);
       
         this.props.changeMacros(newBMR, dietTypeMacros);
-        
+
+       
     };
     
-
     render(){
-
+        let input;
+        if(this.props.isQuestionVisible){
+            input = <CalcDietType handleSubmit={this.handleSubmit} handleChange={this.handleOnChange}></CalcDietType>;
+        }
         return (
             <StyledCalcMacronutirentsOutput>
                 <StyledHeader>In order to keep your weight, you should eat</StyledHeader>
@@ -51,7 +56,7 @@ export class CalcMacronutrientsOutput extends React.Component {
                     </StyledMacroWrapper>
                   
                 </StyledMacros>
-                <CalcDietType handleSubmit={this.handleSubmit} handleChange={this.handleOnChange}></CalcDietType>
+                {input}
             </StyledCalcMacronutirentsOutput>
         );
     }

@@ -70,6 +70,7 @@ class CalcQuestions extends React.Component {
             };
             this.props.addInformations(informations);
             this.setState(initialState);
+            this.myFormRef.reset();
         } 
         
       }
@@ -82,7 +83,7 @@ class CalcQuestions extends React.Component {
                 <StyledCalcQuestions >
          
                 <StyledHeader>What's your BMI bro?</StyledHeader>
-                    <Form action="" onSubmit={this.onFormSubmit}>
+                    <Form action="" onSubmit={this.onFormSubmit} ref={(el) => this.myFormRef = el}>
 
                         <GenderSelect handleChange={this.handleChange}></GenderSelect>
                         <StyledError>{genderError}</StyledError>
