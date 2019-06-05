@@ -28,6 +28,8 @@ class CalcDietInfo extends React.Component {
             dietTypeError = 'Please, select your dietType';
         }
 
+        
+
         if(dietTypeError){
             this.setState({dietTypeError});
             return false;
