@@ -9,20 +9,31 @@ class Calculator extends React.Component {
 
   state = {
     informations: {},
-    isBack: true
+    isOutputVisible: false,
+    isQuestionsVisible: false,
+    isVisible: false
   }
 
-    checkIsBack = () => {
+    makeGainInvisible = () => {
       this.setState({
-        isBack: false
+        isVisible: false
       });
     }
 
+    makeQuestionsInvisible = (isQuestionsVisible) => {
+      this.setState({
+        isQuestionsVisible: isQuestionsVisible,
+        isOutputVisible: true,
+        isVisible: true
+      });
+ 
+    } 
+
     addInformations = info => {
-      
       this.setState({
         informations: info,
-        isBack: true
+        isQuestionsVisible: true,
+        isOutputVisible: false
       });
     }
 
@@ -30,7 +41,7 @@ class Calculator extends React.Component {
       return (
         <CalcWrapper>
           <CalcQuestions addInformations={this.addInformations}/>
-          <CalcDietInfo informations={this.state.informations} isBack={this.state.isBack} clearState={this.clearState} isBack={this.state.isBack} checkIsBack={this.checkIsBack}/>
+          <CalcDietInfo informations={this.state.informations} makeGainInvisible={this.makeGainInvisible} makeQuestionsInvisible={this.makeQuestionsInvisible} isVisible={this.state.isVisible} isQuestionsVisible={this.state.isQuestionsVisible} isOutputVisible={this.state.isOutputVisible}/>
           <CalcOutput informations={this.state.informations}/>
         </CalcWrapper>
       );

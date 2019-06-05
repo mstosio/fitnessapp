@@ -5,13 +5,14 @@ import { CalcBMR } from './CalcBMR';
 import { StyledCalcDietInfo} from '../layout/styled/index';
 import { CalcMacronutrients } from './CalcMacronutrients';
 import { CalcMacronutrientsOutput } from './CalcMacronutrientsOutput';
+import { calculateNewMacros, calculateNewBMR } from '../../libs/Helpers';
+import { CalcDietType } from './CalcDietType';
 import { calculateDailyCaloricDemand, calculateDailyMacro } from '../../libs/Helpers';
 
 
 
 let initialState = {
         BMR: '',
-        isVisible: true,
         isOutputVisible: false,
         dietType: '',
         dietTypeError: '', 
@@ -24,16 +25,11 @@ class CalcDietInfo extends React.Component {
     state = initialState
     
     changeMacros = (newBMR ,dietTypeMacros) => {
-        this.props.checkIsBack();
-
-        this.setState({
-            rerender:  true, 
+        this.props.makeGainInvisible();
+        this.setState({ 
             BMR: newBMR,
-            macros: dietTypeMacros,
-            isQuestionVisible: false
+            macros: dietTypeMacros
         });
-
-      
     }
 
     handleChange = (event) => {
@@ -62,26 +58,41 @@ class CalcDietInfo extends React.Component {
         const {BMR, dietType } = this.state;
         const { weight } =  this.props.informations;
         const validation = this.validateForm();
+        this.props.makeQuestionsInvisible(false);
         if(validation){
             this.setState({
-                rerender: true,
-                isVisible: false,
-                isOutputVisible: true,
-                macros: calculateDailyMacro(BMR, weight, dietType),
-                isQuestionVisible: true
+                macros: calculateDailyMacro(BMR, weight, dietType)
             });
         }
     }
 
-  
+
+    handleOnChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+
+       
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        
+        let newBMR = calculateNewBMR(this.state.BMR, this.state.dietType);
+        let dietTypeMacros = calculateNewMacros(this.state.macros, this.state.dietType);
+      
+        this.changeMacros(newBMR, dietTypeMacros);
+
+    };
+
+
     componentDidUpdate(){
         const { genderType, weight, height, activity} = this.props.informations;
         const currentBMR = calculateDailyCaloricDemand(genderType, weight, height, activity);
     
-        if(this.state.BMR != currentBMR && this.state.rerender){
+        if(this.state.BMR != currentBMR){
             this.setState({
-                BMR: currentBMR,
-                isVisible: true
+                BMR: currentBMR
             });
         } 
     }
@@ -89,34 +100,33 @@ class CalcDietInfo extends React.Component {
     render() {
         const { BMR,  isVisible, macros, isOutputVisible, rerender, isQuestionVisible } = this.state;    
         let macronutrients,
-            bmr;
-
-        if(BMR != "" && isVisible){
+            bmr,
+            input;
+  
+        if(this.props.isQuestionsVisible){
             macronutrients = <CalcMacronutrients macro={BMR} dietError={this.state.dietTypeError} 
             weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit} isQuestionVisible={this.props.questionVisible}/>;
             bmr = <CalcBMR macro={BMR}></CalcBMR>;
         }
-         
-        if (isOutputVisible) {
+          
+        if(this.props.isOutputVisible && this.props.isVisible){
+            input = <CalcDietType handleSubmit={this.handleSubmit} handleChange={this.handleOnChange}></CalcDietType>;
+        }
+
+        if (this.props.isOutputVisible) {
             macronutrients = <CalcMacronutrientsOutput changeMacros={this.changeMacros} macros={macros} BMR={BMR}  isQuestionVisible={isQuestionVisible}></CalcMacronutrientsOutput>;
             bmr = <CalcBMR macro={BMR}></CalcBMR>;
         } 
 
-    
-        // if(isOutputVisible && !rerender && this.props.isBack){
-        //     macronutrients = <CalcMacronutrients macro={BMR} dietError={this.state.dietTypeError} 
-        //     weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit} isQuestionVisible={this.props.questionVisible}/>;
-        //     bmr = <CalcBMR macro={BMR}></CalcBMR>;
-        // }
-
-           
+        
         return (
             <ThemeProvider theme={theme}>
                 <StyledCalcDietInfo>
                     {bmr}
                     {macronutrients}
+                    {input}
                 </StyledCalcDietInfo>
-            
+               
             </ThemeProvider>
         );
 

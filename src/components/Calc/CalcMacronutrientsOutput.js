@@ -3,7 +3,6 @@ import proteinIcon from '../../assets/icons/protein.svg';
 import carbsIcon from '../../assets/icons/carbs.svg';
 import fatsIcon from '../../assets/icons/fats.svg';
 import { StyledIcon, StyledMacroWrapper, StyledMacros, StyledHeader, StyledCalcMacronutirentsOutput } from '../layout/styled/index';
-import { CalcDietType } from './CalcDietType';
 import { calculateNewMacros, calculateNewBMR } from '../../libs/Helpers';
 
 
@@ -34,10 +33,8 @@ export class CalcMacronutrientsOutput extends React.Component {
     };
     
     render(){
-        let input;
-        if(this.props.isQuestionVisible){
-            input = <CalcDietType handleSubmit={this.handleSubmit} handleChange={this.handleOnChange}></CalcDietType>;
-        }
+      
+       
         return (
             <StyledCalcMacronutirentsOutput>
                 <StyledHeader>In order to keep your weight, you should eat</StyledHeader>
@@ -56,7 +53,7 @@ export class CalcMacronutrientsOutput extends React.Component {
                     </StyledMacroWrapper>
                   
                 </StyledMacros>
-                {input}
+                
             </StyledCalcMacronutirentsOutput>
         );
     }
