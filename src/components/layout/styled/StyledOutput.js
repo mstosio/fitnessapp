@@ -3,13 +3,20 @@ import styled from 'styled-components';
 
 
 export const StyledCalcOut = styled.div`
-    display: flex;
-    flex-direction: column;
+
     grid-area: calc-out;
-    align-self: center;
+    color: #ffffff;
+    border-radius: 25px;
+    height: 65vh;
+    width: 100%;
+    display: flex;
     justify-self: center;
-    background-color: red;
-    
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    width: 500px;
+    background-color: gray;
+    ${'' /* background-color: ${({theme}) => theme.colors.lightgray}; */}
 `;
 
 export const StyledCalcMacronutirentsOutput = styled.div`

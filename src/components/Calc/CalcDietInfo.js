@@ -10,34 +10,17 @@ import { CalcDietType } from './CalcDietType';
 import { calculateDailyCaloricDemand, calculateDailyMacro } from '../../libs/Helpers';
 
 
-
 let initialState = {
         BMR: '',
-        isOutputVisible: false,
         dietType: '',
         dietTypeError: '', 
-        macros: {}, 
-        rerender: true, 
-        questionVisible: true
+        macros: {},
+        dietGoalError: ''
 };
 
 class CalcDietInfo extends React.Component {
     state = initialState
     
-    changeMacros = (newBMR ,dietTypeMacros) => {
-        this.props.makeGainInvisible();
-        this.setState({ 
-            BMR: newBMR,
-            macros: dietTypeMacros
-        });
-    }
-
-    handleChange = (event) => {
-        this.setState({
-            dietType: event.target.value
-        });
-    }
-
     validateForm = () => {
         let  dietTypeError = "";
 
@@ -49,8 +32,64 @@ class CalcDietInfo extends React.Component {
             this.setState({dietTypeError});
             return false;
         }
-        
+
         return true;
+    };
+    
+    validateMacroForm = () => {
+        let  dietGoalError = "";
+   
+        if(this.state.dietType === "loseWeight"){
+            return true;
+        }
+
+        if(this.state.dietType === "gainWeight"){
+            return true;
+        }
+
+        dietGoalError = 'Please, select what is your goal!';
+
+        if(dietGoalError){
+            this.setState({dietGoalError});
+            return false;
+        }
+
+    }
+
+    changeMacros = (newBMR ,dietTypeMacros) => {
+            this.setState({ 
+                BMR: newBMR,
+                macros: dietTypeMacros
+            });
+    }
+
+    //zmiana nazwy + robi to samo co handleChange
+    handleOnChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+  
+
+    handleChange = (event) => {
+        this.setState({
+            dietType: event.target.value
+        });
+    }
+
+      //zmiana nazwy
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const validation = this.validateMacroForm();
+
+        if(validation){
+            let newBMR = calculateNewBMR(this.state.BMR, this.state.dietType);
+            let dietTypeMacros = calculateNewMacros(this.state.macros, this.state.dietType);
+
+            this.props.makeGainInvisible();
+            this.changeMacros(newBMR, dietTypeMacros);
+        }
     };
 
     onFormSubmit = event => {
@@ -58,39 +97,20 @@ class CalcDietInfo extends React.Component {
         const {BMR, dietType } = this.state;
         const { weight } =  this.props.informations;
         const validation = this.validateForm();
-        this.props.makeQuestionsInvisible(false);
+       
         if(validation){
+            this.props.makeQuestionsInvisible(false);
             this.setState({
                 macros: calculateDailyMacro(BMR, weight, dietType)
             });
         }
     }
 
-
-    handleOnChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-
-       
-    }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        
-        let newBMR = calculateNewBMR(this.state.BMR, this.state.dietType);
-        let dietTypeMacros = calculateNewMacros(this.state.macros, this.state.dietType);
-      
-        this.changeMacros(newBMR, dietTypeMacros);
-
-    };
-
-
     componentDidUpdate(){
         const { genderType, weight, height, activity} = this.props.informations;
         const currentBMR = calculateDailyCaloricDemand(genderType, weight, height, activity);
-    
-        if(this.state.BMR != currentBMR){
+
+        if(this.state.BMR != currentBMR && !this.props.isOutputVisible){
             this.setState({
                 BMR: currentBMR
             });
@@ -98,22 +118,23 @@ class CalcDietInfo extends React.Component {
     }
        
     render() {
-        const { BMR,  isVisible, macros, isOutputVisible, rerender, isQuestionVisible } = this.state;    
+        const { BMR, macros, isQuestionVisible, dietTypeError, dietGoalError } = this.state; 
+        const { isQuestionsVisible, isOutputVisible, isVisible } = this.props;
         let macronutrients,
             bmr,
-            input;
+            inputDietType;
   
-        if(this.props.isQuestionsVisible){
-            macronutrients = <CalcMacronutrients macro={BMR} dietError={this.state.dietTypeError} 
+        if(isQuestionsVisible){
+            macronutrients = <CalcMacronutrients macro={BMR} dietError={dietTypeError} 
             weight={this.props.informations.weight} handleChange={this.handleChange} onFormSubmit={this.onFormSubmit} isQuestionVisible={this.props.questionVisible}/>;
             bmr = <CalcBMR macro={BMR}></CalcBMR>;
         }
           
-        if(this.props.isOutputVisible && this.props.isVisible){
-            input = <CalcDietType handleSubmit={this.handleSubmit} handleChange={this.handleOnChange}></CalcDietType>;
+        if(isOutputVisible && isVisible){
+            inputDietType = <CalcDietType dietGoalError={dietGoalError} handleSubmit={this.handleSubmit} handleChange={this.handleOnChange}></CalcDietType>;
         }
 
-        if (this.props.isOutputVisible) {
+        if (isOutputVisible) {
             macronutrients = <CalcMacronutrientsOutput changeMacros={this.changeMacros} macros={macros} BMR={BMR}  isQuestionVisible={isQuestionVisible}></CalcMacronutrientsOutput>;
             bmr = <CalcBMR macro={BMR}></CalcBMR>;
         } 
@@ -124,12 +145,10 @@ class CalcDietInfo extends React.Component {
                 <StyledCalcDietInfo>
                     {bmr}
                     {macronutrients}
-                    {input}
-                </StyledCalcDietInfo>
-               
+                    {inputDietType}
+                </StyledCalcDietInfo> 
             </ThemeProvider>
         );
-
     }
 }
 

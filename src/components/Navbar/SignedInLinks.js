@@ -6,6 +6,7 @@ const SignedInLinks = () => (
         <NavList>
             <StyledNavLink to='/home'>Home</StyledNavLink>
             <StyledNavLink to='/calculator'>Check</StyledNavLink>
+            <StyledNavLink to='/food'>Food</StyledNavLink>
         </NavList>
    
 );

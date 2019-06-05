@@ -9,7 +9,7 @@ class GenderSelect extends React.Component {
                 <GroupItem>
                     <Avatar src={"https://www.heartfoundation.org.au/images/elements/bmi-male-loop.gif"}></Avatar>
                     <StyledRadioInputWrapper>
-                        <StyledRadioInput type="radio" id="gender-male" name="gendertype" value="male" onChange={this.props.handleChange} primary/>
+                        <StyledRadioInput type="radio" id="gender-male" name="gendertype" value="male" onClick={this.props.handleChange} primary/>
                         <StyledRadioInputLabel htmlFor="gender-male" primary/>
                         <div>Male</div>
                     </StyledRadioInputWrapper>
@@ -19,7 +19,7 @@ class GenderSelect extends React.Component {
                 <GroupItem>
                     <Avatar src={"https://www.heartfoundation.org.au/images/elements/bmi-female-loop.gif"}></Avatar>
                     <StyledRadioInputWrapper>
-                        <StyledRadioInput type="radio" id="gender-female" name="gendertype" value="female" onChange={this.props.handleChange}  primary/>
+                        <StyledRadioInput type="radio" id="gender-female" name="gendertype" value="female" onClick={this.props.handleChange}  primary/>
                         <StyledRadioInputLabel htmlFor="gender-female" primary/>
                         <div>Female</div>
                     </StyledRadioInputWrapper>

@@ -13,24 +13,24 @@ export class CalcMacronutrientsOutput extends React.Component {
             
         }
   
-    handleOnChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+    // handleOnChange = (event) => {
+    //     this.setState({
+    //         [event.target.name]: event.target.value
+    //     });
 
        
-    }
+    // }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
         
-        let newBMR = calculateNewBMR(this.props.BMR, this.state.dietType);
-        let dietTypeMacros = calculateNewMacros(this.props.macros, this.state.dietType);
+    //     let newBMR = calculateNewBMR(this.props.BMR, this.state.dietType);
+    //     let dietTypeMacros = calculateNewMacros(this.props.macros, this.state.dietType);
       
-        this.props.changeMacros(newBMR, dietTypeMacros);
+    //     this.props.changeMacros(newBMR, dietTypeMacros);
 
        
-    };
+    // };
     
     render(){
       

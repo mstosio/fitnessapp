@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledGroup, InputWrapper, GroupItem, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper, Form, StyledButton  } from '../layout/styled/index';
+import { StyledGroup, InputWrapper, GroupItem, StyledError, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper, Form, StyledButton  } from '../layout/styled/index';
 
 export const CalcDietType = (props) => {
     return (
@@ -18,6 +18,7 @@ export const CalcDietType = (props) => {
                         <StyledRadioInputLabel htmlFor="gainweight-input"/>
                         <div>Gain</div>
                     </StyledRadioInputWrapper>
+                    <StyledError>{props.dietGoalError}</StyledError>
                     <StyledButton type="submit">Dalej</StyledButton>
                 </Form>
             </InputWrapper>
