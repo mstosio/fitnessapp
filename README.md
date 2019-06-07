@@ -8,7 +8,7 @@ Javascript/React
 
 ### API
 
-https://www.food2fork.com/
+https://www.edamam.com/
 
 ## Available Scripts
 
