@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Dish from './Dish';
+import { StyledFood } from '../layout/styledFood/index';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const Food = () => {
@@ -21,21 +23,21 @@ const Food = () => {
   };
 
   const getDishes = async () => {
-    const response = await axios.get(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`);
+    const response = await axios.get(`https://api.edamam.com/search?q=high-protein&app_id=${APP_ID}&app_key=${APP_KEY}`);
     setDishes(response.data.hits);
-    console.log(response.data.hits);
+
+  
   };
+
+
   return (
-      <div>
-        <form className="search-form">
-          <input type="text" onChange={updateSearch}/>
+      <>
+        <StyledFood>  
           {dishes.map(dish => (
-            <Dish key={1}/>
-          ))}
-         
-          <Dish/>
-        </form>
-      </div>
+              <Link to="/food/dish"><Dish key={1} image={dish.recipe.image} title={dish.recipe.label} /></Link>
+            ))}
+        </StyledFood>
+      </>
     );
 
 }; 

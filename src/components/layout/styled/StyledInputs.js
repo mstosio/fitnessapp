@@ -27,6 +27,11 @@ export const StyledTextLabel = styled.label`
     z-index: 99;
 `;
 
+export const StyledInputBox = styled.div`
+    display: flex;
+    width: 100%;
+`;
+
 export const StyledInputRange = styled.input`
    
   -webkit-appearance: none;
