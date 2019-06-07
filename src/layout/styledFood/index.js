@@ -1,2 +1,3 @@
 export { StyledDish, StyledImage, StyledDescription, StyledImageWrapper } from './StyledDish';
-export { StyledFood } from './StyledFood'; 
+export { StyledFood, StyledFoodWrapper } from './StyledFood'; 
+export { StyledFoodCategory, StyledFoodCategoryList, StyledFoodCategoryItem } from './StyledFoodCategory';

@@ -7,3 +7,8 @@ export const StyledFood = styled.div`
     margin: 50px;
     grid-gap: 50px;
 `;
+
+export const StyledFoodWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
