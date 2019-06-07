@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import  { theme }  from '../layout/utils/theme';
+import  { theme }  from '../../layout/utils/theme';
 import { CalcBMR } from './CalcBMR';
-import { StyledCalcDietInfo} from '../layout/styled/index';
+import { StyledCalcDietInfo} from '../../layout/styled/index';
 import { CalcMacronutrients } from './CalcMacronutrients';
 import { CalcMacronutrientsOutput } from './CalcMacronutrientsOutput';
 import { calculateNewMacros, calculateNewBMR } from '../../libs/Helpers';

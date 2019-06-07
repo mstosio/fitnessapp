@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import GlobalStyle from './components/layout/styled/GlobalStyle';
+import GlobalStyle from './layout/styled/GlobalStyle';
 import Home from './components/dashboard/Home';
 import Calculator from './components/Calc/Calculator';
 import Food from './components/Food/Food';

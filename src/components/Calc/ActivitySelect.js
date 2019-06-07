@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledGroup, InputWrapper, GroupItem, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper  } from '../layout/styled/index';
+import { StyledGroup, InputWrapper, GroupItem, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper  } from '../../layout/styled/index';
 
 class ActivitySelect extends React.Component {
     render() {

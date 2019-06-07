@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledBMR, StyledHeader } from '../layout/styled/index';
+import { StyledBMR, StyledHeader } from '../../layout/styled/index';
 
 export const CalcBMR = (props) => {
    

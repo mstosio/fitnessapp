@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputWrapper } from '../layout/styled';
-import { StyledError, StyledHeader, StyledButton, Form, StyledRadioInputWrapper, StyledRadioInput, StyledRadioInputLabel} from '../layout/styled/index';
+import { InputWrapper } from '../../layout/styled';
+import { StyledError, StyledHeader, StyledButton, Form, StyledRadioInputWrapper, StyledRadioInput, StyledRadioInputLabel} from '../../layout/styled/index';
 
 
 

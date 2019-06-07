@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledAvatar } from '../layout/styled/index';
+import { StyledAvatar } from '../../layout/styled/index';
 
 
 const Avatar = (props) => {

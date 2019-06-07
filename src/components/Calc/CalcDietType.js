@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledGroup, InputWrapper, GroupItem, StyledError, StyledInputBox, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper, Form, StyledButton  } from '../layout/styled/index';
+import { StyledGroup, InputWrapper, GroupItem, StyledError, StyledInputBox, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper, Form, StyledButton  } from '../../layout/styled/index';
 
 export const CalcDietType = (props) => {
     return (

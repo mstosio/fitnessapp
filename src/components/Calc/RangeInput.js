@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledGroup, InputWrapper, GroupItem, Form, StyledTextInput, StyledTextLabel, StyledInputRange } from '../layout/styled/index';
+import { StyledGroup, InputWrapper, GroupItem, Form, StyledTextInput, StyledTextLabel, StyledInputRange } from '../../layout/styled/index';
 
 class RangeInput extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledCalcOut } from '../layout/styled/index';
+import { StyledCalcOut } from '../../layout/styled/index';
 import { calculateBMI } from '../../libs/Helpers';
 
 class CalcOutput extends React.Component {

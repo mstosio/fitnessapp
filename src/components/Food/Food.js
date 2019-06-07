@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Dish from './Dish';
-import { StyledFood } from '../layout/styledFood/index';
-import axios from 'axios';
+import { StyledFood } from '../../layout/styledFood/index';
+
+import edamam from '../../api/edamam';
 import { Link } from 'react-router-dom';
 
 
@@ -23,14 +24,23 @@ const Food = () => {
   };
 
   const getDishes = async () => {
-    const response = await axios.get(`https://api.edamam.com/search?q=high-protein&app_id=${APP_ID}&app_key=${APP_KEY}`);
+ 
+    const response =  await edamam.get('/search', {
+      params: {
+          q: 'high-protein',
+          from: 0,
+          to: 20
+      }
+    });
     setDishes(response.data.hits);
-
-  
   };
 
 
+  
+
   return (
+
+
       <>
         <StyledFood>  
           {dishes.map(dish => (

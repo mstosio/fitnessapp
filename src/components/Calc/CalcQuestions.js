@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyledCalcQuestions, StyledHeader, StyledButton, Form, StyledError } from '../layout/styled/index';
+import { StyledCalcQuestions, StyledHeader, StyledButton, Form, StyledError } from '../../layout/styled/index';
 import styled, { ThemeProvider } from 'styled-components';
-import  { theme }  from '../layout/utils/theme';
+import  { theme }  from '../../layout/utils/theme';
 import  GenderSelect  from './GenderSelect';
 import RangeInput  from './RangeInput';
 import ActivitySelect from './ActivitySelect';

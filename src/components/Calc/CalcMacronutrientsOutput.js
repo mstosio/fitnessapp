@@ -2,7 +2,7 @@ import React, {} from 'react';
 import proteinIcon from '../../assets/icons/protein.svg';
 import carbsIcon from '../../assets/icons/carbs.svg';
 import fatsIcon from '../../assets/icons/fats.svg';
-import { StyledIcon, StyledMacroWrapper, StyledMacros, StyledHeader, StyledCalcMacronutirentsOutput } from '../layout/styled/index';
+import { StyledIcon, StyledMacroWrapper, StyledMacros, StyledHeader, StyledCalcMacronutirentsOutput } from '../../layout/styled/index';
 import { calculateNewMacros, calculateNewBMR } from '../../libs/Helpers';
 
 

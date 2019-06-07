@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledGroup, InputWrapper, GroupItem, Form, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper } from '../layout/styled/index';
+import { StyledGroup, InputWrapper, GroupItem, Form, StyledRadioInput, StyledRadioInputLabel, StyledRadioInputWrapper } from '../../layout/styled/index';
 import Avatar from './Avatar';
 
 class GenderSelect extends React.Component {
