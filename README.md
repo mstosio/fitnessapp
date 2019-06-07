@@ -1,6 +1,6 @@
 ## Fitness App Project
 
-This app is created for people who are interested in healthy lifestyle and nutrition.
+This app is created for people who are interested in healthy lifestyle and nutrition. [Development in progress]
 
 ### Technologies
 
