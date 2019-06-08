@@ -9,23 +9,19 @@ import { Link } from 'react-router-dom';
 const Food = () => {
 
   const [dishes, setDishes] = useState([]);
-
+  const [category, setCategory] = useState('high-protein');
 
   useEffect(() => {
-    getDishes();
-  }, []);
+    getDishes(category);
+  }, [category]);
 
+  
 
-
-  // const changeCategory = (category) => {
-  //   contiune
-  // };
- 
-  const getDishes = async () => {
+  const getDishes = async (selectedCategory) => {
  
     const response =  await edamam.get('/search', {
       params: {
-          q: 'high-protein',
+          q: selectedCategory,
           from: 0,
           to: 20
       }
@@ -33,13 +29,17 @@ const Food = () => {
     setDishes(response.data.hits);
   };
 
+
+
   return (
       <>
         <StyledFoodWrapper>
-          <FoodCategory changeCategory={changeCategory}/>
+          <FoodCategory setCategory={setCategory}/>
           <StyledFood>  
-            {dishes.map(dish => (
-                <Link to="/food/dish"><Dish key={1} image={dish.recipe.image} title={dish.recipe.label} /></Link>
+            {dishes.map((dish, index) => (
+              <Link to="/food/dish" >
+                <Dish key={index}  image={dish.recipe.image} title={dish.recipe.label} />
+              </Link>
               ))}
           </StyledFood>
         </StyledFoodWrapper>
