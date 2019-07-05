@@ -58,13 +58,7 @@ class CalcDietInfo extends React.Component {
 
     }
 
-    changeMacros = (newBMR ,dietTypeMacros) => {
-            this.setState({ 
-                BMR: newBMR,
-                macros: dietTypeMacros
-            });
-    }
-
+  
     //zmiana nazwy + robi to samo co handleChange
     handleOnChange = (event) => {
         this.setState({
@@ -94,6 +88,14 @@ class CalcDietInfo extends React.Component {
         }
     };
 
+    changeMacros = (newBMR ,dietTypeMacros) => {
+        this.setState({ 
+            BMR: newBMR,
+            macros: dietTypeMacros
+        });
+    }
+
+
     onFormSubmit = event => {
         event.preventDefault();
         const {BMR, dietType } = this.state;
@@ -108,6 +110,11 @@ class CalcDietInfo extends React.Component {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.informations != this.state.informations;
+    }   
+
+    
     componentDidUpdate(){
         const { genderType, weight, height, activity} = this.props.informations;
         const currentBMR = calculateDailyCaloricDemand(genderType, weight, height, activity);
