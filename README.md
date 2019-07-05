@@ -2,6 +2,10 @@
 
 This app is created for people who are interested in healthy lifestyle and nutrition.
 
+### LIVE
+
+https://mstosio.github.io/fitnessapp/
+
 ### Technologies
 
 Javascript/React
