@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "df33b5007c16f692047f03708f05c6fb",
+    "revision": "563265aaf03f80520814aef4f449dccc",
     "url": "/fitnessapp/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fitnessapp/static/css/2.b84cf735.chunk.css"
   },
   {
-    "revision": "47cc0bf73860681dc9d3",
+    "revision": "b6bf9357c10315d44238",
     "url": "/fitnessapp/static/css/main.dbd01882.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fitnessapp/static/js/2.26cdcf5d.chunk.js"
   },
   {
-    "revision": "47cc0bf73860681dc9d3",
-    "url": "/fitnessapp/static/js/main.0fc91876.chunk.js"
+    "revision": "b6bf9357c10315d44238",
+    "url": "/fitnessapp/static/js/main.a9a0f7e3.chunk.js"
   },
   {
     "revision": "78e69adb0d2e26275d33",
