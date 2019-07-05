@@ -1,7 +1,3 @@
----
-permalink: /index.html
----
-
 ## Fitness App Project
 
 This app is created for people who are interested in healthy lifestyle and nutrition.
